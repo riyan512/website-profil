@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Portfolio | Nama Kamu</title>
+
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(15, 23, 42, 0.96);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: #cbd5e1 !important;
+            margin-left: 15px;
+        }
+
+        .nav-link:hover {
+            color: #38bdf8 !important;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at top right, #0ea5e9 0%, transparent 30%),
+                linear-gradient(135deg, #020617, #0f172a 60%, #172554);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-size: 55px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            color: #cbd5e1;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .profile-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #38bdf8;
+            box-shadow: 0 0 45px rgba(56, 189, 248, 0.45);
+        }
+
+        .badge-profile {
+            position: absolute;
+            bottom: 15px;
+            right: -15px;
+            background: #38bdf8;
+            color: #082f49;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .btn-main {
+            background: #38bdf8;
+            color: #082f49;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+        }
+
+        .btn-main:hover {
+            background: #7dd3fc;
+            color: #082f49;
+        }
+
+        .btn-outline-light {
+            border-radius: 30px;
+            padding: 12px 25px;
+        }
+
+        /* SECTION */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-weight: 800;
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #64748b;
+            margin-bottom: 45px;
+        }
+
+        /* ABOUT */
+        .about-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .info-box {
+            padding: 20px;
+            border-radius: 15px;
+            background: #f1f5f9;
+            margin-bottom: 15px;
+        }
+
+        .info-box i {
+            color: #0284c7;
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        /* SKILLS */
+        .skill-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.07);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .skill-icon {
+            font-size: 35px;
+            color: #0284c7;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            height: 8px;
+            border-radius: 10px;
+            background: #e2e8f0;
+        }
+
+        .progress-bar {
+            background: #0284c7;
+        }
+
+        /* PROJECT */
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+            transition: 0.3s;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-top {
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0284c7, #1d4ed8);
+            color: white;
+            font-size: 50px;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: #0f172a;
+            color: white;
+        }
+
+        .contact-card {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .contact-item i {
+            font-size: 25px;
+            color: #38bdf8;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #020617;
+            color: #94a3b8;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+
+            .hero {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .profile-img {
+                width: 220px;
+                height: 220px;
+                margin-top: 40px;
+            }
+
+            .badge-profile {
+                right: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-code-slash"></i> PORTFOLIO
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <p class="mb-2">HALO, SAYA</p>
+
+                <h1>
+                    TANDRE DEPRIANTO <span></span>
+                </h1>
+
+                <h3 class="mb-3">
+                    PPLG Student & Web Developer
+                </h3>
+
+                <p>
+                    Saya adalah siswa SMK yang memiliki minat
+                    dalam bidang teknologi, pemrograman, dan
+                    pengembangan website. Saya senang mempelajari
+                    hal baru dan mengembangkan kemampuan melalui
+                    berbagai project.
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#contact" class="btn btn-main me-2">
+                        <i class="bi bi-envelope"></i>
+                        Hubungi Saya
+                    </a>
+
+                    <a href="#projects"
+                       class="btn btn-outline-light">
+                        Lihat Project
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5 text-center">
+
+                <div class="profile-wrapper">
+
+                    <!-- FOTO KAMU -->
+                    <img
+                        src="foto-saya.jpg"
+                        alt="Foto Profil"
+                        class="profile-img">
+
+                    <div class="badge-profile">
+                        <i class="bi bi-patch-check-fill"></i>
+                        Open to Work
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section id="about">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="section-title">
+                Tentang Saya
+            </h2>
+
+            <p class="section-subtitle">
+                Sedikit informasi tentang diri saya
+            </p>
+
+        </div>
+
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-7">
+
+                <div class="about-card">
+
+                    <h3 class="fw-bold mb-3">
+                        Saya suka membuat sesuatu dengan kode.
+                    </h3>
+
+                    <p>
+                        Saya merupakan siswa SMK jurusan
+                        Pengembangan Perangkat Lunak dan Gim (PPLG).
+                        Saya tertarik dengan dunia pemrograman,
+                        website, database, dan teknologi.
+                    </p>
+
+                    <p>
+                        Saya terus belajar untuk meningkatkan
+                        kemampuan teknis maupun kemampuan bekerja
+                        sama dalam sebuah tim.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-5 mt-4 mt-lg-0">
+
+                <div class="info-box">
+                    <i class="bi bi-person"></i>
+                    <b>Nama</b>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;TANDRE DEPRIANTO
+                </div>
+
+                <div class="info-box">
+                    <i class="bi bi-mortarboard"></i>
+                    <b>Pendidikan</b>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;SMK Negeri 2 Kota Jambi
+                </div>
+
+                <div class="info-box">
+                    <i class="bi bi-geo-alt"></i>
+                    <b>Lokasi</b>
+                    <br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Jambi, Indonesia
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SKILLS -->
+<section id="skills" class="bg-light">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="section-title">
+                Keahlian
+            </h2>
+
+            <p class="section-subtitle">
+                Teknologi yang sedang saya pelajari
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="skill-card">
+
+                    <i class="bi bi-filetype-html skill-icon"></i>
+
+                    <h5>HTML & CSS</h5>
+
+                    <p class="text-muted">
+                        Membuat struktur dan tampilan website.
+                    </p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 85%;">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="skill-card">
+
+                    <i class="bi bi-filetype-php skill-icon"></i>
+
+                    <h5>PHP</h5>
+
+                    <p class="text-muted">
+                        Membuat website dinamis.
+                    </p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 75%;">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="skill-card">
+
+                    <i class="bi bi-database skill-icon"></i>
+
+                    <h5>MySQL</h5>
+
+                    <p class="text-muted">
+                        Mengelola database dan data.
+                    </p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 75%;">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-6 col-lg-3">
+
+                <div class="skill-card">
+
+                    <i class="bi bi-filetype-py skill-icon"></i>
+
+                    <h5>Python</h5>
+
+                    <p class="text-muted">
+                        Membuat program dan aplikasi sederhana.
+                    </p>
+
+                    <div class="progress">
+                        <div class="progress-bar"
+                             style="width: 70%;">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="section-title">
+                Project Saya
+            </h2>
+
+            <p class="section-subtitle">
+                Beberapa project yang pernah saya kerjakan
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+
+                <div class="project-card">
+
+                    <div class="project-top">
+                        <i class="bi bi-globe2"></i>
+                    </div>
+
+                    <div class="project-content">
+
+                        <h4>Website Profile</h4>
+
+                        <p class="text-muted">
+                            Website portfolio pribadi menggunakan
+                            HTML, CSS, dan Bootstrap.
+                        </p>
+
+                        <span class="badge text-bg-primary">
+                            HTML
+                        </span>
+
+                        <span class="badge text-bg-dark">
+                            Bootstrap
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="project-card">
+
+                    <div class="project-top">
+                        <i class="bi bi-database"></i>
+                    </div>
+
+                    <div class="project-content">
+
+                        <h4>Database Siswa</h4>
+
+                        <p class="text-muted">
+                            Membuat database dan tabel siswa
+                            menggunakan MySQL.
+                        </p>
+
+                        <span class="badge text-bg-primary">
+                            MySQL
+                        </span>
+
+                        <span class="badge text-bg-dark">
+                            Database
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="project-card">
+
+                    <div class="project-top">
+                        <i class="bi bi-code-square"></i>
+                    </div>
+
+                    <div class="project-content">
+
+                        <h4>Aplikasi Sederhana</h4>
+
+                        <p class="text-muted">
+                            Membuat program sederhana untuk
+                            melatih logika pemrograman.
+                        </p>
+
+                        <span class="badge text-bg-primary">
+                            Python
+                        </span>
+
+                        <span class="badge text-bg-dark">
+                            Programming
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h2 class="section-title">
+                Hubungi Saya
+            </h2>
+
+            <p class="section-subtitle text-light">
+                Mari terhubung untuk kesempatan kerja atau project.
+            </p>
+
+        </div>
+
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-7">
+
+                <div class="contact-card">
+
+                    <div class="contact-item">
+                        <i class="bi bi-envelope"></i>
+
+                        <div>
+                            <small>Email</small>
+                            <br>
+                            ahmadzakijambi@gmail.com
+                        </div>
+                    </div>
+
+
+                    <div class="contact-item">
+                        <i class="bi bi-telephone"></i>
+
+                        <div>
+                            <small>Telepon</small>
+                            <br>
+                            087844743497
+                        </div>
+                    </div>
+
+
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt"></i>
+
+                        <div>
+                            <small>Lokasi</small>
+                            <br>
+                            Jambi, Indonesia
+                        </div>
+                    </div>
+
+
+                    <div class="mt-4">
+
+                        <a href="#"
+                           class="btn btn-main me-2">
+                            <i class="bi bi-github"></i>
+                            GitHub
+                        </a>
+
+                        <a href="mailto:emailkamu@gmail.com"
+                           class="btn btn-outline-light">
+                            <i class="bi bi-envelope"></i>
+                            Email Saya
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p class="mb-0">
+        © 2026 TANDRE DEPRIANTO.
+        Dibuat dengan HTML, CSS & Bootstrap.
+    </p>
+
+</footer>
+
+
+<!-- Bootstrap JS -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
